@@ -1,7 +1,7 @@
 #/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-import sys, getopt
+import sys, getopt, os
 
 def generate_tag(keyword):
     return '{{'+keyword+'}}'
@@ -29,6 +29,10 @@ for opt_name, opt_value in opts:
         # todo: print and log
         print("new domain with protocol: %s" % (replace_dict['new_domain_with_protocol']))
 
+# remove htaccess file
+if replace_dict['origin_domain'] == '-':
+    if os.path.exists(output_filename):
+        os.remove(output_filename)
 
 template_filename = 'htaccess.tpl'
 
