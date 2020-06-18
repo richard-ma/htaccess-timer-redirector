@@ -1,16 +1,36 @@
 #/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-template_filename = 'htaccess.tpl'
-output_filename = 'output'
+import sys, getopt
 
 def generate_tag(keyword):
     return '{{'+keyword+'}}'
 
-replace_dict = {
-    'origin_domain': 'baidu.com',
-    'new_domain_with_protocol': 'http://test.com'
-}
+opts, args = getopt.getopt(sys.argv[1:], '-o:-s:-t:', ["output=", "origin_domain=", "new_domain_with_protocol="])
+
+replace_dict = dict()
+
+for opt_name, opt_value in opts:
+    # output filename
+    if opt_name in ('-o', '--output'):
+        output_filename = opt_value
+        # todo: print and log
+        print("OUTPUT Filename: %s" % (output_filename))
+
+    # origin_domain
+    if opt_name in ('-s', '--origin_domain'):
+        replace_dict['origin_domain'] = opt_value
+        # todo: print and log
+        print("origin domain: %s" % (replace_dict['origin_domain']))
+
+    # new_domain_with_protocol
+    if opt_name in ('-t', '--new_domain_with_protocol'):
+        replace_dict['new_domain_with_protocol'] = opt_value
+        # todo: print and log
+        print("new domain with protocol: %s" % (replace_dict['new_domain_with_protocol']))
+
+
+template_filename = 'htaccess.tpl'
 
 generated_lines = list()
 with open(template_filename, 'r') as f:
