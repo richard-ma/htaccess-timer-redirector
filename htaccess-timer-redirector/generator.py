@@ -3,6 +3,12 @@
 
 import sys, getopt, os
 
+# get current path
+# https://blog.csdn.net/vitaminc4/article/details/78702852
+current_path = os.path.split(os.path.realpath(__file__))[0]
+# set working directory
+os.chdir(current_path)
+
 def generate_tag(keyword):
     return '{{'+keyword+'}}'
 
