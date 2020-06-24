@@ -23,9 +23,12 @@
     1. 开头的`30 0`表示执行时间为在每天的0:30
     1. `/root/htaccess-timer-redirector/generator.py`是generator.py的路径
     1. `-o /home/wwwroot/a.com/.htaccess`是A域名的.htaccess文件的路径
-    1. `-s a.com`源域名A,注意这里直接写域名,不写http://
+    1. `-s a.com`源域名A,注意这里直接写域名,不写http://,如果不使用跳转,此项为`-s -`
     1. `-t http://b.com`目标域名B,这里要写http://
 1. 所有计划任务填写好后,保存就生效了
+
+## 配置截图
+![](./doc/1.png)
 
 ## Trouble shooting
 1. cron不执行 
