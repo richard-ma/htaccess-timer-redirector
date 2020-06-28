@@ -1,7 +1,7 @@
 #/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-import sys, getopt, os
+import sys, getopt, os, shutil
 
 # get current path
 # https://blog.csdn.net/vitaminc4/article/details/78702852
@@ -36,9 +36,9 @@ for opt_name, opt_value in opts:
         print("new domain with protocol: %s" % (replace_dict['new_domain_with_protocol']))
 
 # remove htaccess file when origin_domain is -
+orig_filename = 'htaccess.orig'
 if replace_dict['origin_domain'] == '-':
-    if os.path.exists(output_filename):
-        os.remove(output_filename)
+    shutil.copy2(orig_filename, output_filename)
     sys.exit()
 
 template_filename = 'htaccess.tpl'
