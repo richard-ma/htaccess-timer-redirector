@@ -8,6 +8,9 @@
 ## 安装
 1. 下载压缩包到源域名服务器
 1. 解压放到任意目录,generator.py文件所在目录后文称之为工作目录
+1. 安装python3
+    1. CentOS: `yum install python3`
+    1. Ubuntu: `apt-get install python3`
 
 ## 使用
 1. 进入源域名服务器用`crontab -e`打开计划任务配置文件
