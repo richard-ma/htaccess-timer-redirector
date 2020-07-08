@@ -12,7 +12,7 @@ os.chdir(current_path)
 def generate_tag(keyword):
     return '{{'+keyword+'}}'
 
-opts, args = getopt.getopt(sys.argv[1:], '-o:-s:-t:', ["output=", "origin_domain=", "new_domain_with_protocol="])
+opts, args = getopt.getopt(sys.argv[1:], '-o:-s:-t:-d', ["output=", "origin_domain=", "target_domain_with_protocol=", "default_domain_with_protocol="])
 
 replace_dict = dict()
 
@@ -29,11 +29,17 @@ for opt_name, opt_value in opts:
         # todo: print and log
         print("origin domain: %s" % (replace_dict['origin_domain']))
 
-    # new_domain_with_protocol
-    if opt_name in ('-t', '--new_domain_with_protocol'):
-        replace_dict['new_domain_with_protocol'] = opt_value
+    # target_domain_with_protocol
+    if opt_name in ('-t', '--target_domain_with_protocol'):
+        replace_dict['target_domain_with_protocol'] = opt_value
         # todo: print and log
-        print("new domain with protocol: %s" % (replace_dict['new_domain_with_protocol']))
+        print("target domain with protocol: %s" % (replace_dict['target_domain_with_protocol']))
+
+    # default_domain_with_protocol
+    if opt_name in ('-d', '--default_domain_with_protocol'):
+        replace_dict['default_domain_with_protocol'] = opt_value
+        # todo: print and log
+        print("default domain with protocol: %s" % (replace_dict['default_domain_with_protocol']))
 
 
 generated_lines = list()
