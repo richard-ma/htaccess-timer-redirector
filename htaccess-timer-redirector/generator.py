@@ -35,13 +35,6 @@ for opt_name, opt_value in opts:
         # todo: print and log
         print("new domain with protocol: %s" % (replace_dict['new_domain_with_protocol']))
 
-# remove htaccess file when origin_domain is -
-orig_filename = 'htaccess.orig'
-if replace_dict['origin_domain'] == '-':
-    shutil.copy2(orig_filename, output_filename)
-    sys.exit()
-
-template_filename = 'htaccess.tpl'
 
 generated_lines = list()
 with open(template_filename, 'r') as f:
