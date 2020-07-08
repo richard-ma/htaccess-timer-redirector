@@ -42,6 +42,7 @@ for opt_name, opt_value in opts:
         print("default domain with protocol: %s" % (replace_dict['default_domain_with_protocol']))
 
 
+template_filename = 'htaccess.tpl'
 generated_lines = list()
 with open(template_filename, 'r') as f:
     for line in f.readlines():
